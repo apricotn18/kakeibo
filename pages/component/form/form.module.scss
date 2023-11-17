@@ -1,9 +1,9 @@
-.tab {
+.form {
 	padding-top: 25px;
 	text-align: center;
 	background-color: #f8f8f8;
 
-	.tab_title {
+	.form_title {
 		border-top: 1px solid #c1ccd3;
 
 		span {
@@ -14,34 +14,35 @@
 		}
 	}
 
-	.tab_list {
+	.form_tabList {
 		display: flex;
 		gap: 15px;
 		margin: 5px 15px 0;
 	}
 
-	.tab_item {
+	.form_tabItem {
 		width: 100%;
 		padding: 15px 0;
 		font-weight: bold;
-		background-color:#fff;
-		border-bottom: none;
+		color: #9ca0a2;
+		background-color: #efefef;
 		border-radius: 5px 5px 0 0;
-		opacity: .5;
-		box-shadow: 0px -15px 10px -10px rgba(100, 100, 100, 0.1) inset;
+		box-shadow: 0 -5px 10px 0 rgba(100, 100, 100, 0.1) inset;
 	}
 
-	.tab_checkbox {
+	.form_radio {
 		display: none;
 
-		&:checked + .tab_item {
-			opacity: 1;
+		&:checked + .form_tabItem {
+			color: inherit;
+			background-color: #fff;
 			box-shadow: none;
 		}
 	}
 
-	.tab_input {
+	.form_container {
 		position: relative;
+		padding: 15px;
 		background-color: #fff;
 	}
 }
