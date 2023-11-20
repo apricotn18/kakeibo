@@ -9,6 +9,7 @@
 		span {
 			display: inline-block;
 			padding: 0 10px;
+			font-weight: normal;
 			background-color: #f8f8f8;
 			transform: translateY(-50%);
 		}
@@ -22,12 +23,11 @@
 
 	.form_tabItem {
 		width: 100%;
-		padding: 15px 0;
-		font-weight: bold;
+		padding: 12px 0;
 		color: #9ca0a2;
 		background-color: #efefef;
+		border-top: 6px solid #d6dadc;
 		border-radius: 5px 5px 0 0;
-		box-shadow: 0 -5px 10px 0 rgba(100, 100, 100, 0.1) inset;
 	}
 
 	.form_radio {
@@ -36,13 +36,94 @@
 		&:checked + .form_tabItem {
 			color: inherit;
 			background-color: #fff;
-			box-shadow: none;
+			border-top-color: #5b8cac;
+		}
+	}
+}
+
+.formInput {
+	padding: 20px 30px 65px;
+	background-color: #fff;
+
+	.formInput_title {
+		font-size: 16px;
+	}
+
+	.formInput_priceWrapper {
+		display: flex;
+		align-items: center;
+		margin-top: 15px;
+	}
+
+	.formInput_subjectWrapper {
+		display: flex;
+		align-items: center;
+		margin-top: 10px;
+	}
+
+	.formInput_label {
+		margin-right: 10px;
+		vertical-align: baseline;
+		word-break: keep-all;
+	}
+
+	.formInput_textInput {
+		width: 100%;
+		padding: 10px;
+		border: none;
+		color: #1e6694;
+		font-family: inherit;
+		font-size: 16px;
+		background-color: #eef7ff;
+		outline: none;
+		border-radius: 5px;
+	}
+
+	.formInput_yen {
+		margin-left: 7px;
+	}
+
+	.formInput_subtitle {
+		margin-top: 20px;
+	}
+
+	.formInput_memberWrapper {
+		display: flex;
+		gap: 1px;
+		margin-top: 15px;
+		border-radius: 4px;
+		overflow: hidden;
+	}
+
+	.formInput_memberLabel {
+		width: 100%;
+		padding: 15px 0;
+		color: #9ca0a2;
+		background-color: #efefef;
+	}
+
+	.formInput_checkbox {
+		display: none;
+
+		&:checked + .form_memberLabel {
+			color: inherit;
+			background-color: #dbefff;
 		}
 	}
 
-	.form_container {
-		position: relative;
-		padding: 15px;
-		background-color: #fff;
+	.formInput_submit {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		margin-top: 20px;
+		padding: 20px;
+		color: #fff;
+		font-family: inherit;
+		font-size: 16px;
+		font-weight: bold;
+		background-color: #1e6694;
+		border: none;
+		box-sizing: border-box;
 	}
 }
