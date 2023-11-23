@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './component/header/Header';
 import Summary from './component/summary/Summary';
 import Form from './component/form/Form';
+import { Price } from './assets/js/type'
 
-export default function Index() {
+type Props = {
+	price: Price[];
+}
+
+export default function Index(props: Props) {
 	return (
 		<>
 			<Header />
 			<Summary />
-			<Form />
+			<Form price={props.price} />
 		</>
 	);
 }

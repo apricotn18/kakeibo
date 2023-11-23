@@ -1,8 +1,15 @@
 import React, { useState, useCallback } from 'react';
 import { YUJI, KYOKO } from '../../assets/js/user'
+import { Price } from '../../assets/js/type'
 import style from './form.module.scss';
 
-export default function Index() {
+type Props = {
+	price: Price[];
+}
+
+export default function Index(props: Props) {
+	console.log(props.price);
+
 	const [user, setUser] = useState<string|undefined>(YUJI);
 	const [price, setPrice] = useState<number>();
 	const [subject, setSubject] = useState<string>('');
@@ -30,9 +37,9 @@ export default function Index() {
 			<form>
 				<div>
 					<fieldset className={style.form_tabList}>
-						<input type="radio" id={YUJI} value={YUJI} name="user" className={style.form_radio} defaultChecked />
+						<input type="radio" id={YUJI} value={YUJI} name="name" className={style.form_radio} defaultChecked />
 						<label htmlFor={YUJI} className={style.form_tabItem} data-user={YUJI} onClick={handleClickTab}>{YUJI}</label>
-						<input type="radio" id={KYOKO} value={KYOKO} name="user" className={style.form_radio} />
+						<input type="radio" id={KYOKO} value={KYOKO} name="name" className={style.form_radio} />
 						<label htmlFor={KYOKO} className={style.form_tabItem} data-user={KYOKO} onClick={handleClickTab}>{KYOKO}</label>
 					</fieldset>
 				</div>
