@@ -42,7 +42,7 @@
 }
 
 .formInput {
-	padding: 20px 30px 65px;
+	padding: 30px 20px 90px;
 	background-color: #fff;
 
 	.formInput_title {
@@ -69,13 +69,12 @@
 
 	.formInput_textInput {
 		width: 100%;
-		padding: 10px;
-		border: none;
-		color: #1e6694;
+		padding: 11px;
+		color: inherit;
 		font-family: inherit;
 		font-size: 16px;
-		background-color: #eef7ff;
 		outline: none;
+		border: 1px solid #6795b2;
 		border-radius: 5px;
 	}
 
@@ -84,29 +83,27 @@
 	}
 
 	.formInput_subtitle {
-		margin-top: 20px;
+		margin-top: 17px;
 	}
 
-	.formInput_memberWrapper {
+	.formInput_targetWrapper {
 		display: flex;
-		gap: 1px;
+		gap: 8px;
 		margin-top: 15px;
 		border-radius: 4px;
 		overflow: hidden;
 	}
 
-	.formInput_memberLabel {
+	.formInput_targetLabel {
 		width: 100%;
-		padding: 15px 0;
-		color: #9ca0a2;
-		background-color: #efefef;
+		padding: 17px 0;
+		border-radius: 50px;
 	}
 
 	.formInput_checkbox {
 		display: none;
 
-		&:checked + .form_memberLabel {
-			color: inherit;
+		&:checked + .formInput_targetLabel {
 			background-color: #dbefff;
 		}
 	}

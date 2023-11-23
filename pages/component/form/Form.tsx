@@ -48,11 +48,11 @@ export default function Index() {
 						<input type="text" name="subject" value={subject} className={style.formInput_textInput} onChange={handleChangesetSubject} />
 					</fieldset>
 					<p className={style.formInput_subtitle}>立て替え対象メンバー</p>
-					<fieldset className={style.formInput_memberWrapper}>
-						<input type="checkbox" id={'target' + YUJI} value="" name={'target' + YUJI} className={style.formInput_checkbox} defaultChecked />
-						<label htmlFor={'target' + YUJI} className={style.formInput_memberLabel}>{YUJI}</label>
-						<input type="checkbox" id={'target' + KYOKO} value="" name={'target' + KYOKO} className={style.formInput_checkbox} defaultChecked />
-						<label htmlFor={'target' + KYOKO} className={style.formInput_memberLabel}>{KYOKO}</label>
+					<fieldset className={style.formInput_targetWrapper}>
+						<input type="checkbox" id="target1" value={YUJI} name="target[]" className={style.formInput_checkbox} defaultChecked />
+						<label htmlFor="target1" className={style.formInput_targetLabel}>{YUJI}</label>
+						<input type="checkbox" id="target2" value={KYOKO} name="target[]" className={style.formInput_checkbox} defaultChecked />
+						<label htmlFor="target2" className={style.formInput_targetLabel}>{KYOKO}</label>
 					</fieldset>
 					<fieldset>
 						<input type="submit" value="登録" className={style.formInput_submit} />
