@@ -3,6 +3,7 @@ import { getFirestore, collection, query, getDocs } from "firebase/firestore";
 import './assets/css/reset.scss';
 import './assets/css/common.scss';
 
+const users = [];
 const price = [];
 
 // firebase
@@ -16,15 +17,21 @@ const firebaseConfig = {
 };
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const queries = await getDocs(query(collection(db, "price")));
-queries.forEach((doc) => {
+// user
+const usersQueries = await getDocs(query(collection(db, "users")));
+usersQueries.forEach((doc) => {
+	users.push(doc.data());
+});
+// price
+const priceQueries = await getDocs(query(collection(db, "price")));
+priceQueries.forEach((doc) => {
 	price.push(doc.data());
 });
 
 export default function MyApp({ Component, pageProps }) {
 	return (
 		<>
-			<Component {...pageProps} price={price} />
+			<Component {...pageProps} users={users} price={price} />
 		</>
 	);
 }

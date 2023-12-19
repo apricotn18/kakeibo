@@ -1,23 +1,23 @@
 import React, { useState, useCallback } from 'react';
-import { YUJI, KYOKO } from '../../assets/js/user'
-import { Price } from '../../assets/js/type'
+import { User, Price } from '../../assets/js/type';
 import style from './form.module.scss';
 
 type Props = {
-	price: Price[];
+	users: User[];
+	price: Price[]|undefined;
 }
 
 export default function Index(props: Props) {
-	console.log(props.price);
-
-	const [user, setUser] = useState<string|undefined>(YUJI);
+	const users: User[] = props.users;
+	const [user, setUser] = useState<User>(props.users[0]);
 	const [price, setPrice] = useState<number>();
 	const [subject, setSubject] = useState<string>('');
 
 	const handleClickTab = useCallback((e: React.MouseEvent<HTMLLabelElement>) => {
 		const targetUser = e.currentTarget.dataset.user;
 		if (targetUser) {
-			setUser(targetUser);
+			const userNum: number = Number.parseInt(targetUser);
+			setUser(props.users[userNum]);
 		}
 	}, []);
 
@@ -37,14 +37,16 @@ export default function Index(props: Props) {
 			<form>
 				<div>
 					<fieldset className={style.form_tabList}>
-						<input type="radio" id={YUJI} value={YUJI} name="name" className={style.form_radio} defaultChecked />
-						<label htmlFor={YUJI} className={style.form_tabItem} data-user={YUJI} onClick={handleClickTab}>{YUJI}</label>
-						<input type="radio" id={KYOKO} value={KYOKO} name="name" className={style.form_radio} />
-						<label htmlFor={KYOKO} className={style.form_tabItem} data-user={KYOKO} onClick={handleClickTab}>{KYOKO}</label>
+					{users.map((item, index) =>
+						<div key={index} className={style.form_tabItem}>
+							<input type="radio" id={'user'+index} value={item.name} name="name" className={style.form_radio} defaultChecked={index === 0} />
+							<label htmlFor={'user'+index} data-user={index} className={style.form_tabBody} onClick={handleClickTab}>{item.name}</label>
+						</div>
+					)}
 					</fieldset>
 				</div>
 				<div className={style.formInput}>
-					<p className={style.formInput_title}>{user}が立て替え</p>
+					<p className={style.formInput_title}>{user.name}が立て替え</p>
 					<fieldset className={style.formInput_priceWrapper}>
 						<label className={style.formInput_label}>金額</label>
 						<input type="number" name="price" value={price} className={style.formInput_textInput} onChange={handleChangePrice} />
@@ -56,10 +58,12 @@ export default function Index(props: Props) {
 					</fieldset>
 					<p className={style.formInput_subtitle}>立て替え対象メンバー</p>
 					<fieldset className={style.formInput_targetWrapper}>
-						<input type="checkbox" id="target1" value={YUJI} name="target[]" className={style.formInput_checkbox} defaultChecked />
-						<label htmlFor="target1" className={style.formInput_targetLabel}>{YUJI}</label>
-						<input type="checkbox" id="target2" value={KYOKO} name="target[]" className={style.formInput_checkbox} defaultChecked />
-						<label htmlFor="target2" className={style.formInput_targetLabel}>{KYOKO}</label>
+						{users.map((item, index) =>
+							<div key={index}>
+								<input type="checkbox" id={'target'+index} value={item.name} name="target[]" className={style.formInput_checkbox} defaultChecked />
+								<label htmlFor={'target'+index} className={style.formInput_targetLabel}>{item.name}</label>
+							</div>
+						)}
 					</fieldset>
 					<fieldset>
 						<input type="submit" value="登録" className={style.formInput_submit} />
