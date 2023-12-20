@@ -98,7 +98,7 @@
 		font-weight: bold;
 	}
 
-	.formInput_targetWrapper {
+	.formInput_allocationWrapper {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 13px 30px;
@@ -107,7 +107,7 @@
 		overflow: hidden;
 	}
 
-	.formInput_targetLabel {
+	.formInput_allocationLabel {
 		position: relative;
 		display: inline-block;
 		border-radius: 50px;
@@ -133,7 +133,7 @@
 			height: 10px;
 			border-bottom: 3px solid;
 			border-right: 3px solid;
-			border-color: #d6dadc;
+			border-color: #efefef;
 			border-radius: 1px;
 			transform: rotate(45deg);
 		}
@@ -142,11 +142,7 @@
 	.formInput_checkbox {
 		display: none;
 
-		&:checked + .formInput_targetLabel {
-			&::before {
-				background-color: #e1eefa;
-			}
-
+		&:checked + .formInput_allocationLabel {
 			&::after {
 				border-color: inherit;
 			}

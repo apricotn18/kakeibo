@@ -4,25 +4,19 @@ import style from './form.module.scss';
 
 type Props = {
 	users: User[];
-	price: Price[]|undefined;
 }
 
 export default function Index(props: Props) {
 	const users: User[] = props.users;
-	const [user, setUser] = useState<User>(props.users[0]);
-	const [price, setPrice] = useState<number>();
+	const [targetUser, setTargetUser] = useState<User>(props.users[0]);
 	const [subject, setSubject] = useState<string>('');
 
 	const handleClickTab = useCallback((e: React.MouseEvent<HTMLLabelElement>) => {
-		const targetUser = e.currentTarget.dataset.user;
-		if (targetUser) {
-			const userNum: number = Number.parseInt(targetUser);
-			setUser(props.users[userNum]);
+		const selectedUser = e.currentTarget.dataset.user;
+		if (selectedUser) {
+			const userNum: number = Number.parseInt(selectedUser);
+			setTargetUser(props.users[userNum]);
 		}
-	}, []);
-
-	const handleChangePrice = useCallback((e: React.MouseEvent<HTMLInputElement>) => {
-		setPrice(Number.parseInt(e.currentTarget.value));
 	}, []);
 
 	const handleChangesetSubject = useCallback((e: React.MouseEvent<HTMLInputElement>) => {
@@ -37,19 +31,20 @@ export default function Index(props: Props) {
 			<form>
 				<div>
 					<fieldset className={style.form_tabList}>
-					{users.map((item, index) =>
+					{users.map((user, index) =>
 						<div key={index} className={style.form_tabItem}>
-							<input type="radio" id={'user'+index} value={item.name} name="name" className={style.form_radio} defaultChecked={index === 0} />
-							<label htmlFor={'user'+index} data-user={index} className={style.form_tabBody} onClick={handleClickTab}>{item.name}</label>
+							<input type="radio" id={'user'+index} value={user.name} name="name" className={style.form_radio} defaultChecked={index === 0} />
+							<label htmlFor={'user'+index} data-user={index} className={style.form_tabBody} onClick={handleClickTab}>{user.name}</label>
 						</div>
 					)}
 					</fieldset>
 				</div>
 				<div className={style.formInput}>
-					<p className={style.formInput_title}>{user.name}が立て替え</p>
+					<p className={style.formInput_title}>{targetUser.name}が立て替え</p>
 					<fieldset className={style.formInput_priceWrapper}>
 						<label className={style.formInput_label}>金額</label>
-						<input type="number" name="price" value={price} className={style.formInput_textInput} onChange={handleChangePrice} />
+						<input type="number" name="price" className={style.formInput_textInput} />
+						{/* <input type="number" name="price" value={price} className={style.formInput_textInput} onChange={handleChangePrice} /> */}
 						<span className={style.formInput_yen}>円</span>
 					</fieldset>
 					<fieldset className={style.formInput_subjectWrapper}>
@@ -57,11 +52,11 @@ export default function Index(props: Props) {
 						<input type="text" name="subject" value={subject} className={style.formInput_textInput} onChange={handleChangesetSubject} />
 					</fieldset>
 					<p className={style.formInput_subtitle}>立て替え対象メンバー</p>
-					<fieldset className={style.formInput_targetWrapper}>
-						{users.map((item, index) =>
+					<fieldset className={style.formInput_allocationWrapper}>
+						{users.map((user, index) =>
 							<div key={index}>
-								<input type="checkbox" id={'target'+index} value={item.name} name="target[]" className={style.formInput_checkbox} defaultChecked />
-								<label htmlFor={'target'+index} className={style.formInput_targetLabel}>{item.name}</label>
+								<input type="checkbox" id={'allocation'+index} value={user.name} name="allocation[]" className={style.formInput_checkbox} defaultChecked />
+								<label htmlFor={'allocation'+index} className={style.formInput_allocationLabel}>{user.name}</label>
 							</div>
 						)}
 					</fieldset>
