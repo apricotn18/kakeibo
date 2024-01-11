@@ -1,14 +1,15 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { BUYLIST } from './firebase/buylist';
+import React from 'react';
 import Header from './components/Header/HeaderComp';
+import BuyList from './components/Buylist/BuylistComp';
+import InputComp from './components/Input/InputComp';
+import { BUYLIST } from './firebase/buylist';
 
 export default function Index() {
-	const [buylist, setBuylist] = useState(BUYLIST);
-
 	return (
 		<>
 			<Header />
-			<BuylistComp list={BUYLIST} />
+			<BuyList list={BUYLIST} />
+			<InputComp />
 		</>
 	);
 }

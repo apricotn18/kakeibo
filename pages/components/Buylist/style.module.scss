@@ -1,0 +1,27 @@
+.wrapper {
+	padding: 15px 15px 25px;
+
+	.list {
+		margin-top: 10px;
+		text-align: left;
+
+		.item {
+			display: flex;
+			align-items: center;
+
+			&:nth-child(2n-1) {
+				background-color: #ecf1f3;
+			}
+
+			> div {
+				padding: 10px 10px 9px;
+				vertical-align: middle;
+			}
+		}
+
+		.date {
+			font-size: 10px;
+			white-space: nowrap;
+		}
+	}
+}

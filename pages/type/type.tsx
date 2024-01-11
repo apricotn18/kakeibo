@@ -8,3 +8,8 @@ export type Price = {
 	subject: string;
 	allocation: string[];
 }
+
+export type Buylist = {
+	name: string;
+	date: Date;
+}
