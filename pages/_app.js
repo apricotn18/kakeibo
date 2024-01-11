@@ -1,5 +1,5 @@
-import './assets/css/reset.scss';
-import './assets/css/common.scss';
+import './css/reset.scss';
+import './css/common.scss';
 
 export default function MyApp({ Component, pageProps }) {
 	return (

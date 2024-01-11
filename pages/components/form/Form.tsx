@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { User, Price } from '../../assets/js/type';
+import { User, Price } from '../../type/type';
 import style from './form.module.scss';
 
 type Props = {
