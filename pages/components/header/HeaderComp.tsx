@@ -1,9 +1,9 @@
 import React from 'react';
-import style from './header.module.scss';
+import style from './style.module.scss';
 
 export default function Index() {
 	return (
-		<header className={style.header}>
+		<header className={style.wrapper}>
 			わりかん
 		</header>
 	);

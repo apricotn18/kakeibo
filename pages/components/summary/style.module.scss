@@ -1,20 +1,21 @@
-.summary {
+.wrapper {
 	position: relative;
-	padding: 0 15px 0;
+	padding: 18px 15px 0;
+	background-color: #f8f8f8;
 
-	.summary_inner {
+	.inner {
 		padding: 20px 0;
 		background-color: #fff;
 		border-radius: 5px;
 		box-shadow: 2px 2px 8px 2px rgba(100, 100, 100, .1);
 	}
 
-	.summary_total {
+	.total {
 		font-size: 16px;
 		font-weight: bold;
 	}
 
-	.summary_totalNum {
+	.totalNum {
 		display: inline-block;
 		font-size: 28px;
 		margin-right: 5px;
@@ -22,11 +23,11 @@
 		transform: translateY(1px);
 	}
 
-	.summary_label {
+	.label {
 		margin-top: 10px;
 	}
 
-	.summary_labelLink {
+	.labelLink {
 		position: relative;
 		display: inline-block;
 		padding: 7px 20px 5px;

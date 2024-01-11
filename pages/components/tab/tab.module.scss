@@ -1,0 +1,29 @@
+.wrapper {
+	display: flex;
+	gap: 15px;
+	padding: 20px 15px 0;
+	background-color: #f8f8f8;
+
+	.item {
+		width: 100%;
+	}
+
+	.body {
+		display: block;
+		padding: 12px 0;
+		color: #9ca0a2;
+		background-color: #efefef;
+		border-top: 6px solid #d6dadc;
+		border-radius: 5px 5px 0 0;
+	}
+
+	.radio {
+		display: none;
+
+		&:checked + .body {
+			color: inherit;
+			background-color: #fff;
+			border-top-color: #1e6695;
+		}
+	}
+}

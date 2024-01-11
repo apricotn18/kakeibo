@@ -1,29 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, query, getDocs, addDoc } from 'firebase/firestore';
-import Header from './components/header/Header';
-import Summary from './components/summary/Summary';
-import Form from './components/form/Form';
-import { User, Price } from './type/type';
-
-// firebase ↓
-const firebaseConfig = {
-	apiKey: 'AIzaSyArlq6WbXEPcDINt-SWqf4wRjGc-TM85Js',
-	authDomain: 'kakeibo-fb1ed.firebaseapp.com',
-	projectId: 'kakeibo-fb1ed',
-	storageBucket: 'kakeibo-fb1ed.appspot.com',
-	messagingSenderId: '798220104610',
-	appId: '1:798220104610:web:f1211f4d46d05fedef78fb'
-};
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const usersQueries = await getDocs(query(collection(db, 'users')));
-const pricesQueries = await getDocs(query(collection(db, 'prices')));
-
-/** firebaseのコレクションにデータを追加 */
-const submitPrices = async (data: Price) => {
-	await addDoc(collection(db, 'prices'), data);
-}
+import { USERS } from './firebase/users';
+import { PRICES } from './firebase/prices';
+import HeaderComp from './components/Header/HeaderComp';
+import SummaryComp from './components/Summary/SummaryComp';
+import TabComp from './components/Tab/TabComp';
+import FormComp from './components/Form/FormComp';
+import { Price } from './type/type';
 
 /** 合計金額を算出 */
 const calcTotal = (prices: Price[]): number => {
@@ -33,37 +15,8 @@ const calcTotal = (prices: Price[]): number => {
 };
 
 export default function Index() {
-	const [users, setUsers] = useState<User[]>([]);
-	const [prices, setPrices] = useState<Price[]>([]);
-	const [total, setTotal] = useState<number>(0);
-
-	useEffect(() => {
-		const initUsers: User[] = [];
-		const initPrices: Price[] = [];
-
-		usersQueries.forEach((doc) => {
-			const data = doc.data();
-			if (data) {
-				initUsers.push({
-					name: data.name,
-				});
-			}
-		});
-		pricesQueries.forEach((doc) => {
-			const data = doc.data();
-			if (data) {
-				initPrices.push({
-					name: data.name,
-					price: data.price,
-					subject: data.subject,
-					allocation: data.allocation,
-				});
-			}
-		});
-		setUsers(initUsers);
-		setPrices(initPrices);
-		setTotal(calcTotal(initPrices));
-	}, []);
+	const [prices, setPrices] = useState(PRICES);
+	const [total, setTotal] = useState(calcTotal(PRICES));
 
 	/** データ登録 */
 	const handleSubmit = useCallback((data: Price) => {
@@ -79,12 +32,13 @@ export default function Index() {
 
 	return (
 		<>
-			<Header />
-			{users && users.length > 0
+			<HeaderComp />
+			{USERS && USERS.length > 0
 				? (
 					<>
-						<Summary total={total} />
-						<Form users={users} handleSubmit={handleSubmit} />
+						<SummaryComp total={total} />
+						<TabComp />
+						<FormComp users={USERS} handleSubmit={handleSubmit} />
 					</>
 				)
 				: <div>ユーザー登録をお願いします</div>
