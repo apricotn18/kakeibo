@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { User, Price } from '../../type/type';
+import { User, Price } from '../../../src/type/type';
 import style from './style.module.scss';
 
 type Props = {
@@ -14,12 +14,12 @@ type Input = {
 	allocation?: string[];
 }
 
-export default function Index(props: Props) {
+export default function Form(props: Props) {
 	const users: User[] = props.users;
 	const [input, setInput] = useState<Input>({});
 
 	/** 金額を更新 */
-	const handleChangePrice = (e: React.MouseEvent<HTMLInputElement>) => {
+	const handleChangePrice = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const newPrice = Number.parseInt(e.currentTarget.value);
 		setInput({
 			...input,
@@ -28,7 +28,7 @@ export default function Index(props: Props) {
 	};
 
 	/** 件名を更新 */
-	const handleChangeSubject = (e: React.MouseEvent<HTMLInputElement>) => {
+	const handleChangeSubject = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const newPrice = Number.parseInt(e.currentTarget.value);
 		setInput({
 			...input,
@@ -38,7 +38,7 @@ export default function Index(props: Props) {
 
 	/** データ送信 */
 	const handleSubmit = () => {
-		props.handleSubmit(input);
+		// props.handleSubmit(input);
 	};
 
 	return (
@@ -46,7 +46,7 @@ export default function Index(props: Props) {
 			{/* 立て替えた人 */}
 			<p className={style.subtitle}>立て替えた人</p>
 			<fieldset className={style.userWrapper}>
-				{users.map((user, index) =>
+				{!users ? '' : users.map((user, index) =>
 					<div key={index}>
 						<input type="radio" id={'user'+index} value={user.name} name="user" className={style.userRadio} defaultChecked={index === 0} />
 						<label htmlFor={'user'+index} className={style.userLabel}><span>{user.name}</span></label>
@@ -70,7 +70,7 @@ export default function Index(props: Props) {
 			{/* 立て替え対象 */}
 			<p className={style.subtitle}>立て替え対象</p>
 			<fieldset className={style.allocationWrapper}>
-				{users.map((user, index) =>
+				{!users ? '' : users.map((user, index) =>
 					<div key={index}>
 						<input type="checkbox" id={'allocation'+index} value={user.name} name="allocation" className={style.allocationCheckbox} defaultChecked />
 						<label htmlFor={'allocation'+index} className={style.allocationLabel}><span>{user.name}</span></label>

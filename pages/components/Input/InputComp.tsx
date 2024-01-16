@@ -1,11 +1,11 @@
 import React, { useState, useCallback } from 'react';
 import TabComp from '../Tab/TabComp';
 import FormComp from '../Form/FormComp';
-import { USERS } from '../../firebase/users';
-import { PRICES } from '../../firebase/prices';
-import { Price } from '../../type/type';
+import { USERS } from '../../../src/firebase/users';
+import { PRICES } from '../../../src/firebase/prices';
+import { Price } from '../../../src/type/type';
 
-export default function Index() {
+export default function Input() {
 	const [prices, setPrices] = useState(PRICES);
 
 	/** データ登録 */

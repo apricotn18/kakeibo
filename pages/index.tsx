@@ -2,8 +2,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import HeaderComp from './components/Header/HeaderComp';
 import SummaryComp from './components/Summary/SummaryComp';
 import InputComp from './components/Input/InputComp';
-import { PRICES } from './firebase/prices';
-import { Price } from './type/type';
+import { PRICES } from '../src/firebase/prices';
+import { Price } from '../src/type/type';
 
 /** 合計金額を算出 */
 const calcTotal = (prices: Price[]): number => {

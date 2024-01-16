@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import style from './tab.module.scss';
 
-export default function Index() {
+export default function Tab() {
 
 	/** タブclick */
 	const handleChange = (e: React.MouseEvent<HTMLLabelElement>) => {
