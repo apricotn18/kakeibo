@@ -1,6 +1,8 @@
+// TODO: Activeのクラス調整
+
 .wrapper {
 	display: flex;
-	gap: 15px;
+	gap: 10px;
 	padding: 20px 15px 0;
 	background-color: #f8f8f8;
 
@@ -10,20 +12,24 @@
 
 	.body {
 		display: block;
-		padding: 12px 0;
+		width: 100%;
+		padding: 15px 0;
 		color: #9ca0a2;
 		background-color: #efefef;
+		border: none;
 		border-top: 6px solid #d6dadc;
 		border-radius: 5px 5px 0 0;
 	}
 
-	.radio {
-		display: none;
-
-		&:checked + .body {
-			color: inherit;
-			background-color: #fff;
-			border-top-color: #1e6695;
-		}
+	.bodyActive {
+		display: block;
+		width: 100%;
+		padding: 15px 0;
+		color: inherit;
+		font-weight: bold;
+		background-color: #fff;
+		border: none;
+		border-top: 6px solid #1e6695;
+		border-radius: 5px 5px 0 0;
 	}
 }

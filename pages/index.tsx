@@ -1,25 +1,34 @@
-import React, { useState, useEffect, useCallback } from 'react';
 import HeaderComp from './components/Header/HeaderComp';
 import SummaryComp from './components/Summary/SummaryComp';
-import InputComp from './components/Input/InputComp';
-import { PRICES } from '../src/firebase/prices';
-import { Price } from '../src/type/type';
-
-/** 合計金額を算出 */
-const calcTotal = (prices: Price[]): number => {
-	return prices && prices.length > 0 ? prices.reduce((acc: number, item: Price) => {
-		return acc + item.price;
-	}, 0) : 0;
-};
+import TabComp from './components/Tab/TabComp';
+import PayFormComp from './components/PayForm/PayFormComp';
+import BuylistFormComp from './components/BuylistForm/BuylistFormComp';
+import { getUsers, UsersContext } from './components/UsersContext';
+import { getPrices, PricesContext } from './components/PricesContext';
 
 export default function Index() {
-	const [total, setTotal] = useState(calcTotal(PRICES));
+	const users = getUsers();
 
 	return (
-		<>
+		<UsersContext.Provider
+			value={users}
+		>
+		<PricesContext.Provider
+			value={getPrices()}
+		>
 			<HeaderComp />
-			<SummaryComp total={total} />
-			<InputComp />
-		</>
+			<SummaryComp />
+			{users && users.length > 0
+				? (
+					<>
+						<TabComp />
+						<PayFormComp />
+						{/* <BuylistFormComp /> */}
+					</>
+				)
+				: <div>ユーザー登録をお願いします</div>
+			}
+		</PricesContext.Provider>
+		</UsersContext.Provider>
 	);
 }

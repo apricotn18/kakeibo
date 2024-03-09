@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Buylist } from '../../../src/type/type';
 import style from './style.module.scss';
 

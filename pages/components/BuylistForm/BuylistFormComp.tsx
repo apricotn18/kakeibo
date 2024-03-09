@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { User, Price } from '../../../src/type/type';
 import style from './style.module.scss';
 

@@ -1,21 +1,17 @@
-import React from 'react';
+import { useContext } from 'react';
+import { Price } from '../../../src/type/type';
+import { PricesContext } from '../PricesContext';
 import style from './style.module.scss';
 
-type Props = {
-	total: number;
-}
+export default function Summary() {
+	const prices = useContext(PricesContext);
+	const total = calcTotal(prices);
 
-/** 価格表示に変更 */
-const toPrice = (price: number): string => {
-	return String(price).replace(/(\d)(?=(\d{3})+$)/g, '$1,');
-}
-
-export default function Summary(props: Props) {
 	return (
 		<div className={style.wrapper}>
 			<div className={style.inner}>
 				<div className={style.total}>
-					合計<span className={style.totalNum}>{toPrice(props.total)}</span>円
+					合計<span className={style.totalNum}>{toPrice(total)}</span>円
 				</div>
 				<div className={style.label}>
 					<a href="" className={style.labelLink}><span>立て替え履歴を見る</span></a>
@@ -23,4 +19,16 @@ export default function Summary(props: Props) {
 			</div>
 		</div>
 	);
+}
+
+/** 合計金額を算出 */
+function calcTotal (prices: Price[]): number {
+	return prices && prices.length > 0 ? prices.reduce((acc: number, item: Price) => {
+		return acc + item.price;
+	}, 0) : 0;
+};
+
+/** 価格表示に変更 */
+function toPrice (price: number): string {
+	return String(price).replace(/(\d)(?=(\d{3})+$)/g, '$1,');
 }
