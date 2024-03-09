@@ -21,6 +21,7 @@ export default function Index() {
 			{users && users.length > 0
 				? (
 					<>
+						{/* TODO: props.childrenを使ってタブ切り替えができるようにする */}
 						<TabComp />
 						<PayFormComp />
 						{/* <BuylistFormComp /> */}

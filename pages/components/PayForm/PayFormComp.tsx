@@ -1,58 +1,42 @@
-import { useState, useContext } from 'react';
-import { User } from '../../../src/type/type';
+import { useContext, useReducer } from 'react';
 import { UsersContext } from '../UsersContext';
+import { inputsReducer } from './inputsReducer';
+import { User } from '../../../src/type/type';
 import style from './style.module.scss';
 
-type Users = User & {
-	checked: boolean;
-}
-
 export default function Form() {
-	const initUsers = useContext(UsersContext);
-	const users: Users[] = initUsers.map((user) => {
-		return {
-			...user,
-			checked: true,
-		}
+	const users: User[] = useContext(UsersContext);
+	const [state, dispatch] = useReducer(inputsReducer, {
+		name: users[0].name,
+		price: 0,
+		subject: '',
+		allocation: users.map(user => user.name),
 	});
 
-	const [selectedUserNum, setSelectedUserNum] = useState<number>(0);
-	const [priceInput, setPriceInput] = useState<number>();
-	const [subjectInput, setSubjectInput] = useState<string>();
-
-	/** 立て替えた人を更新 */
-	const handleChangeUser = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const targetId = e.currentTarget.id;
-		const num = Number.parseInt(targetId.replace('user', ''));
-		setSelectedUserNum(num);
-	};
-
-	/** 金額を更新 */
-	const handleChangePrice = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const newPrice = Number.parseInt(e.target.value);
-		setPriceInput(newPrice);
-	};
-
-	/** 件名を更新 */
-	const handleChangeSubject = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setSubjectInput(e.target.value);
+	/** 入力値を更新 */
+	const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+		dispatch({
+			type: 'changed',
+			input: {
+				[e.currentTarget.name]: e.currentTarget.value,
+			},
+		});
 	};
 
 	/** 立て替え対象を更新 */
 	const handleChangeAllocation = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const newUsers = users;
-		const targetId = e.currentTarget.id;
-		const num = Number.parseInt(targetId.replace('allocation', ''));
-		newUsers[num].checked = !!newUsers[num].checked;
-		setUser(newUsers);
+		dispatch({
+			type: 'changed_allocation',
+			input: {
+				checked: e.currentTarget.checked,
+				value: e.currentTarget.value,
+			},
+		});
 	};
 
 	/** データ送信 */
 	const handleSubmit = () => {
-		if (priceInput && subjectInput) {
-			const checkedUsers = users.filter(user => user.checked);
-			handleSubmit();
-		}
+		// TODO: contextでdispatchを実装
 	};
 
 	return (
@@ -61,9 +45,17 @@ export default function Form() {
 			<p className={style.subtitle}>立て替えた人</p>
 			<fieldset className={style.userWrapper}>
 				{!users ? '' : users.map((user, index) =>
-					<div key={index}>
-						<input type="radio" id={'user'+index} value={user.name} name="name" className={style.userRadio} defaultChecked={index === selectedUserNum} onChange={handleChangeUser} />
-						<label htmlFor={'user'+index} className={style.userLabel}><span>{user.name}</span></label>
+					<div key={'name'+index}>
+						<input
+							type="radio"
+							id={'name'+index}
+							value={user.name}
+							name="name"
+							className={style.userRadio}
+							defaultChecked={state.name ? user.name === state.name : index === 0}
+							onChange={handleChangeInput}
+						/>
+						<label htmlFor={'name'+index} className={style.userLabel}><span>{user.name}</span></label>
 					</div>
 				)}
 			</fieldset>
@@ -71,22 +63,43 @@ export default function Form() {
 			{/* 金額 */}
 			<fieldset className={style.priceWrapper}>
 				<label className={style.label}>金額</label>
-				<input type="number" name="price" value={priceInput} className={style.input} onChange={handleChangePrice} />
+				<input
+					type="number"
+					name="price"
+					value={state.price}
+					className={style.input}
+					onChange={handleChangeInput}
+				/>
 				<span className={style.yen}>円</span>
 			</fieldset>
 
 			{/* 件名 */}
 			<fieldset className={style.subjectWrapper}>
 				<label className={style.label}>件名</label>
-				<input type="text" name="subject" value={subjectInput} className={style.input} onChange={handleChangeSubject} />
+				<input
+					type="text"
+					name="subject"
+					value={state.subject}
+					className={style.input}
+					onChange={handleChangeInput}
+					placeholder="ラーメン代"
+				/>
 			</fieldset>
 
 			{/* 立て替え対象 */}
 			<p className={style.subtitle}>立て替え対象</p>
 			<fieldset className={style.allocationWrapper}>
 				{!users ? '' : users.map((user, index) =>
-					<div key={index}>
-						<input type="checkbox" id={'allocation'+index} value={user.name} name="allocation" className={style.allocationCheckbox} defaultChecked={user.checked} onChange={handleChangeAllocation} />
+					<div key={'allocation'+index}>
+						<input
+							type="checkbox"
+							id={'allocation'+index}
+							value={user.name}
+							name="allocation"
+							className={style.allocationCheckbox}
+							defaultChecked={state.allocation.includes(user.name)}
+							onChange={handleChangeAllocation}
+						/>
 						<label htmlFor={'allocation'+index} className={style.allocationLabel}><span>{user.name}</span></label>
 					</div>
 				)}

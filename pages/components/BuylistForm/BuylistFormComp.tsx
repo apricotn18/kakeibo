@@ -1,4 +1,3 @@
-import { useState, useCallback } from 'react';
 import { User, Price } from '../../../src/type/type';
 import style from './style.module.scss';
 
@@ -7,16 +6,9 @@ type Props = {
 	handleSubmit: (data: Price) => void;
 }
 
-type Input = {
-	name?: string;
-	price?: number;
-	subject?: string;
-	allocation?: string[];
-}
 
 export default function Form(props: Props) {
 	const users: User[] = props.users;
-	const [input, setInput] = useState<Input>({});
 
 	/** 金額を更新 */
 	const handleChangePrice = (e: React.ChangeEvent<HTMLInputElement>) => {

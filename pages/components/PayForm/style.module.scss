@@ -4,7 +4,7 @@
 	text-align: left;
 
 	.subtitle {
-		padding-top: 25px;
+		padding-top: 30px;
 		font-weight: bold;
 	}
 
@@ -51,13 +51,13 @@
 	.priceWrapper {
 		display: flex;
 		align-items: baseline;
-		margin-top: 17px;
+		margin-top: 20px;
 	}
 
 	.subjectWrapper {
 		display: flex;
 		align-items: baseline;
-		margin-top: 20px;
+		margin-top: 15px;
 	}
 
 	.label {
@@ -68,7 +68,7 @@
 
 	.input {
 		width: 100%;
-		padding: 10px 10px 7px;
+		padding: 11px 10px 8px;
 		color: #1e6694;
 		font-family: inherit;
 		font-size: 14px;
@@ -80,6 +80,10 @@
 		&:focus {
 			border-bottom: 1px solid #1e6694;
 			background-color: #eef7ff;
+		}
+
+		&::placeholder {
+			color: #bdc2c7;
 		}
 	}
 
