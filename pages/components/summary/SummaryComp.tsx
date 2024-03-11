@@ -3,7 +3,7 @@ import { Price } from '../../../src/type/type';
 import { PricesContext } from '../PricesContext';
 import style from './style.module.scss';
 
-export default function Summary() {
+export default function SummaryComp() {
 	const prices = useContext(PricesContext);
 	const total = calcTotal(prices);
 

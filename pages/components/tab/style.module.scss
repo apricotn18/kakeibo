@@ -8,6 +8,8 @@
 
 	.item {
 		width: 100%;
+		max-width: 250px;
+		margin: 0 auto;
 	}
 
 	.body {
@@ -32,4 +34,9 @@
 		border-top: 6px solid #1e6695;
 		border-radius: 5px 5px 0 0;
 	}
+
+}
+
+.hidden {
+	display: none;
 }

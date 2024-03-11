@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import HeaderComp from './components/Header/HeaderComp';
-import SummaryComp from './components/Summary/SummaryComp';
+import HistoryComp from './components/History/HistoryComp';
 import TabComp from './components/Tab/TabComp';
 import TabItemComp from './components/Tab/TabItem/TabItemComp';
 import InputPayComp from './components/InputPay/InputPayComp';
@@ -33,7 +33,7 @@ export default function Index() {
 			{users && users.length > 0
 				? (
 					<>
-						<SummaryComp />
+						<HistoryComp />
 						<TabComp
 							tabs={tabInfo}
 							current={currentTab}
