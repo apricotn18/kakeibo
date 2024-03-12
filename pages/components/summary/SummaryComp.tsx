@@ -1,7 +1,7 @@
-import Link from 'next/link';
 import { useContext } from 'react';
-import { Price } from '../../../src/type/type';
+import LinkButton from '../ButtonLink/ButtonLinkComp';
 import { PricesContext } from '../PricesContext';
+import { Price } from '../../../src/type/type';
 import style from './style.module.scss';
 
 /** 合計金額を算出 */
@@ -27,7 +27,7 @@ export default function SummaryComp() {
 					合計<span className={style.totalNum}>{toPrice(total)}</span>円
 				</div>
 				<div className={style.label}>
-					<Link href="/history" className={style.labelLink}><span>立て替え履歴を見る</span></Link>
+					<LinkButton href="/history">立て替え履歴を見る</LinkButton>
 				</div>
 			</div>
 		</div>

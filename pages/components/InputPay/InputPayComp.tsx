@@ -1,7 +1,7 @@
-import Button from '../Button/ButtonComp';
 import { useContext, useReducer } from 'react';
-import { UsersContext } from '../UsersContext';
+import Button from '../Button/ButtonComp';
 import { inputsReducer } from './inputsReducer';
+import { UsersContext } from '../UsersContext';
 import { User } from '../../../src/type/type';
 import style from './style.module.scss';
 

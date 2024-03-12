@@ -1,9 +1,12 @@
 import { useState } from 'react';
+import Link from 'next/link';
 import HeaderComp from './components/Header/HeaderComp';
 import HistoryComp from './components/History/HistoryComp';
 import TabComp from './components/Tab/TabComp';
 import TabItemComp from './components/Tab/TabItem/TabItemComp';
 import InputPayComp from './components/InputPay/InputPayComp';
+import MessageComp from './components/Message/MessageComp';
+import ButtonLinkComp from './components/ButtonLink/ButtonLinkComp';
 import { getUsers, UsersContext } from './components/UsersContext';
 import { getPrices, PricesContext } from './components/PricesContext';
 
@@ -47,7 +50,12 @@ export default function Index() {
 							</TabItemComp>
 						</TabComp>
 					</>
-				) : <div>ユーザー登録をお願いします</div>
+				) : (
+					<MessageComp>
+						ユーザー登録をお願いします<br /><br />
+						<ButtonLinkComp href="/">ユーザー登録</ButtonLinkComp>
+					</MessageComp>
+				)
 			}
 		</PricesContext.Provider>
 		</UsersContext.Provider>

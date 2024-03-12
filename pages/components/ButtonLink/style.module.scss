@@ -1,0 +1,21 @@
+.body {
+	position: relative;
+	display: inline-block;
+	padding: 7px 20px 5px;
+	background-color: #deebf9;
+	border-radius: 20px;
+
+	& > span {
+		&::after {
+			display: inline-block;
+			content: "";
+			width: 5px;
+			height: 5px;
+			margin-left: 3px;
+			border-top: 1px solid;
+			border-right: 1px solid;
+			transform: translateY(-2px) rotate(45deg);
+		}
+	}
+}
+
