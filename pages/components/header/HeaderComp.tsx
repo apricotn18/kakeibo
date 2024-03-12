@@ -1,10 +1,10 @@
-import React from 'react';
+import Link from 'next/link';
 import style from './style.module.scss';
 
 export default function HeaderComp() {
 	return (
 		<header className={style.wrapper}>
-			わりかん
+			<Link href="/">わりかん</Link>
 		</header>
 	);
 }
