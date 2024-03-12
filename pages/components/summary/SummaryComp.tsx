@@ -26,6 +26,9 @@ export default function SummaryComp() {
 				<div className={style.total}>
 					合計<span className={style.totalNum}>{toPrice(total)}</span>円
 				</div>
+				<div className={style.text}>
+					<span>ユーザー1</span>から<span>ユーザー2</span>へ<span>0000円</span>支払い
+				</div>
 				<div className={style.label}>
 					<LinkButton href="/history">立て替え履歴を見る</LinkButton>
 				</div>

@@ -2,17 +2,27 @@ import { useContext, useReducer } from 'react';
 import Button from '../Button/ButtonComp';
 import { inputsReducer } from './inputsReducer';
 import { UsersContext } from '../UsersContext';
-import { User } from '../../../src/type/type';
+import { User, Price } from '../../../src/type/type';
 import style from './style.module.scss';
 
-export default function InputPayComp() {
+type Props = {
+	item?: Price;
+}
+
+export default function InputPayComp(props: Props) {
 	const users: User[] = useContext(UsersContext);
-	const [state, dispatch] = useReducer(inputsReducer, {
+	const initInput = props.item ? {
+		name: props.item.name,
+		price: props.item.price,
+		subject: props.item.subject,
+		allocation: props.item.allocation,
+	} : {
 		name: users[0].name,
 		price: 0,
 		subject: '',
 		allocation: users.map(user => user.name),
-	});
+	}
+	const [state, dispatch] = useReducer(inputsReducer, initInput);
 
 	/** 入力値を更新 */
 	const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -90,7 +100,7 @@ export default function InputPayComp() {
 				</fieldset>
 
 				{/* 立て替え対象 */}
-				<p className={style.subtitle}>立て替え対象</p>
+				<p className={style.subtitleAllocation}>立て替え対象</p>
 				<fieldset className={style.allocationWrapper}>
 					{!users ? '' : users.map((user, index) =>
 						<div key={'allocation'+index}>

@@ -1,13 +1,13 @@
 .wrapper {
 	position: relative;
-	padding: 18px 15px 0;
+	padding: 20px 20px 0;
 	background-color: #f8f8f8;
 
 	.inner {
 		padding: 20px 0;
 		background-color: #fff;
 		border-radius: 5px;
-		box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.15);
+		box-shadow: 1px 1px 4px 0 rgba(50, 50, 50, 0.2);
 	}
 
 	.total {
@@ -23,7 +23,18 @@
 		transform: translateY(1px);
 	}
 
+	.text {
+		margin-top: 15px;
+		font-size: 12px;
+
+		span {
+			margin: 0 2px;
+			font-size: 14px;
+			font-weight: bold;
+		}
+	}
+
 	.label {
-		margin-top: 10px;
+		margin-top: 13px;
 	}
 }

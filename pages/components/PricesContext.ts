@@ -11,10 +11,12 @@ export function getPrices () {
 		const data = doc.data();
 		if (data) {
 			list.push({
+				id: data.id,
 				name: data.name,
 				price: data.price,
 				subject: data.subject,
 				allocation: data.allocation,
+				timestamp: data.timestamp,
 			});
 		}
 	});

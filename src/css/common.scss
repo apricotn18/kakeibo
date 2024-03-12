@@ -4,8 +4,22 @@
 	line-height: 1;
 }
 
-body {
+section {
+	padding: 25px 20px;
+}
+
+.wrapper {
+	background-color: #f8f8f8;
 	color: #1e6694;
-	background-color: #fff;
 	text-align: center;
+	min-height: 100vh;
+
+	&.wrapper--white {
+		background-color: #fff;
+	}
+}
+
+h1 {
+	text-align: left;
+	line-height: 1;
 }

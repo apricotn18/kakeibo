@@ -7,7 +7,7 @@ type Props = {
 
 export default function TabItemComp(props: Props) {
 	return (
-		<div className={props.isCurrent ? '' : style.hidden}>
+		<div className={props.isCurrent ? style.body : style.bodyHidden}>
 			{props.children}
 		</div>
 	);

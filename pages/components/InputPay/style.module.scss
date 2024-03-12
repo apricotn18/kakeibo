@@ -1,9 +1,11 @@
 .wrapper {
-	padding: 0 25px 35px;
-	background-color: #fff;
 	text-align: left;
 
 	.subtitle {
+		font-weight: bold;
+	}
+
+	.subtitleAllocation {
 		padding-top: 30px;
 		font-weight: bold;
 	}
