@@ -1,4 +1,4 @@
-.body {
+.button {
 	width: 100%;
 	margin-top: 30px;
 	padding: 15px 0 13px;
@@ -11,3 +11,41 @@
 	border-bottom: 3px solid #0b476d;
 	border-radius: 4px;
 }
+
+.buttonLink {
+	position: relative;
+	display: inline-block;
+	padding: 7px 20px 5px;
+	background-color: #deebf9;
+	border-radius: 20px;
+
+	& > span {
+		&::after {
+			display: inline-block;
+			content: "";
+			width: 5px;
+			height: 5px;
+			margin-left: 3px;
+			border-top: 1px solid;
+			border-right: 1px solid;
+			transform: translateY(-2px) rotate(45deg);
+		}
+	}
+}
+
+.link {
+	display: inline-block;
+	text-decoration: underline;
+
+	&::before {
+		display: inline-block;
+		content: "";
+		width: 6px;
+		height: 6px;
+		margin-right: 7px;
+		border-top: 2px solid;
+		border-left: 2px solid;
+		transform: translate(3px, -1px) rotate(-45deg);
+	}
+}
+

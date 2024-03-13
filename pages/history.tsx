@@ -1,7 +1,7 @@
 import HeaderComp from './components/Header/HeaderComp';
 import HistoryComp from './components/History/HistoryComp';
 import MessageComp from './components/Message/MessageComp';
-import ButtonLinkComp from './components/ButtonLink/ButtonLinkComp';
+import ButtonLinkComp from './components/Button/ButtonLinkComp';
 import { getUsers, UsersContext } from './components/UsersContext';
 import { getPrices, PricesContext } from './components/PricesContext';
 

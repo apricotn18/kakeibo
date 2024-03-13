@@ -7,6 +7,6 @@ type Props = {
 
 export default function ButtonComp(props: Props) {
 	return (
-		<input type="button" value={props.label} className={style.body} onClick={props.handleClick} />
+		<input type="button" value={props.label} className={style.button} onClick={props.handleClick} />
 	);
 }

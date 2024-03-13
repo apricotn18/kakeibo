@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import LinkButton from '../ButtonLink/ButtonLinkComp';
+import LinkButton from '../Button/ButtonLinkComp';
 import { PricesContext } from '../PricesContext';
 import { Price } from '../../../src/type/type';
 import style from './style.module.scss';

@@ -11,7 +11,7 @@ section {
 .wrapper {
 	background-color: #f8f8f8;
 	color: #1e6694;
-	text-align: center;
+	text-align: left;
 	min-height: 100vh;
 
 	&.wrapper--white {
@@ -20,6 +20,5 @@ section {
 }
 
 h1 {
-	text-align: left;
 	line-height: 1;
 }

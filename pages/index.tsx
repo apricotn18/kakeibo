@@ -5,7 +5,7 @@ import TabComp from './components/Tab/TabComp';
 import TabItemComp from './components/Tab/TabItem/TabItemComp';
 import InputPayComp from './components/InputPay/InputPayComp';
 import MessageComp from './components/Message/MessageComp';
-import ButtonLinkComp from './components/ButtonLink/ButtonLinkComp';
+import ButtonLinkComp from './components/Button/ButtonLinkComp';
 import { getUsers, UsersContext } from './components/UsersContext';
 import { getPrices, PricesContext } from './components/PricesContext';
 
