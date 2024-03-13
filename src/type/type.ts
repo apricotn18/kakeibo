@@ -5,7 +5,7 @@ export type User = {
 export type Price = {
 	id: number;
 	name: string;
-	price: number;
+	price: number | '';
 	subject: string;
 	allocation: string[];
 	timestamp: {

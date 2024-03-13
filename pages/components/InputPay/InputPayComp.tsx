@@ -1,4 +1,4 @@
-import { useContext, useReducer } from 'react';
+import { useContext, useEffect, useReducer, useState } from 'react';
 import Button from '../Button/ButtonComp';
 import { inputsReducer } from './inputsReducer';
 import { UsersContext } from '../UsersContext';
@@ -18,11 +18,17 @@ export default function InputPayComp(props: Props) {
 		allocation: props.item.allocation,
 	} : {
 		name: users[0].name,
-		price: 0,
-		subject: '',
+		price: undefined,
+		subject: undefined,
 		allocation: users.map(user => user.name),
 	}
 	const [state, dispatch] = useReducer(inputsReducer, initInput);
+	const [isDisable, setIsDisable] = useState(false);
+
+	useEffect(() => {
+		const shouldDisabled = state.price > 0 && !!state.subject && state.allocation.length > 0;
+		setIsDisable(shouldDisabled);
+	}, [state])
 
 	/** 入力値を更新 */
 	const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,7 +53,6 @@ export default function InputPayComp(props: Props) {
 
 	/** データ送信 */
 	const handleSubmit = () => {
-		// TODO: 実装、未入力の場合はdisabledにする機能も
 		console.log(state);
 	};
 
@@ -79,9 +84,10 @@ export default function InputPayComp(props: Props) {
 					<input
 						type="number"
 						name="price"
-						value={state.price}
+						value={state.price || ''}
 						className={style.input}
 						onChange={handleChangeInput}
+						placeholder="1200"
 					/>
 					<span className={style.yen}>円</span>
 				</fieldset>
@@ -92,7 +98,7 @@ export default function InputPayComp(props: Props) {
 					<input
 						type="text"
 						name="subject"
-						value={state.subject}
+						value={state.subject || ''}
 						className={style.input}
 						onChange={handleChangeInput}
 						placeholder="ラーメン代"
@@ -120,7 +126,7 @@ export default function InputPayComp(props: Props) {
 
 				{/* 送信ボタン */}
 				<fieldset>
-					<Button label="登録する" handleClick={handleSubmit} />
+					<Button label="登録する" handleClick={handleSubmit} isDisable={isDisable} />
 				</fieldset>
 			</form>
 		</div>
