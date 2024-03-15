@@ -2,6 +2,7 @@ import { useContext, useEffect, useReducer, useState } from 'react';
 import Button from '../Button/ButtonComp';
 import { inputsReducer } from './inputsReducer';
 import { UsersContext } from '../UsersContext';
+import { usePricesDispatch } from '../PricesContext/PricesContext';
 import { User, Price } from '../../../src/type/type';
 import style from './style.module.scss';
 
@@ -11,17 +12,11 @@ type Props = {
 
 export default function InputPayComp(props: Props) {
 	const users: User[] = useContext(UsersContext);
-	const initInput = props.item ? {
-		name: props.item.name,
-		price: props.item.price,
-		subject: props.item.subject,
-		allocation: props.item.allocation,
-	} : {
+	const initInput = props.item ? props.item : {
 		name: users[0].name,
-		price: undefined,
-		subject: undefined,
 		allocation: users.map(user => user.name),
 	}
+	const pricesDispatch = usePricesDispatch();
 	const [state, dispatch] = useReducer(inputsReducer, initInput);
 	const [isDisable, setIsDisable] = useState(false);
 
@@ -31,7 +26,7 @@ export default function InputPayComp(props: Props) {
 	}, [state])
 
 	/** 入力値を更新 */
-	const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+	function handleChangeInput (e: React.ChangeEvent<HTMLInputElement>) {
 		dispatch({
 			type: 'changed',
 			input: {
@@ -41,7 +36,7 @@ export default function InputPayComp(props: Props) {
 	};
 
 	/** 立て替え対象を更新 */
-	const handleChangeAllocation = (e: React.ChangeEvent<HTMLInputElement>) => {
+	function handleChangeAllocation (e: React.ChangeEvent<HTMLInputElement>) {
 		dispatch({
 			type: 'changed_allocation',
 			input: {
@@ -53,7 +48,12 @@ export default function InputPayComp(props: Props) {
 
 	/** データ送信 */
 	const handleSubmit = () => {
-		console.log(state);
+		setIsDisable(false);
+		pricesDispatch({
+			type: 'update',
+			item: state,
+		});
+		alert('更新しました');
 	};
 
 	return (

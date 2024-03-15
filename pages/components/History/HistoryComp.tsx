@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import HistoryCassetteComp from './HistoryCassette/HistoryCassetteComp';
 import { UsersContext } from '../UsersContext';
-import { PricesContext } from '../PricesContext';
+import { usePrices } from '../PricesContext/PricesContext';
 import { User, Price } from '../../../src/type/type';
 import style from './style.module.scss';
 
@@ -12,7 +12,7 @@ type PriceItem = {
 
 export default function HistoryComp() {
 	const users = useContext(UsersContext);
-	const prices = useContext(PricesContext);
+	const prices = usePrices();
 
 	let priceList: PriceItem[] = [];
 	users.forEach((user: User) => {

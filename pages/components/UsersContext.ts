@@ -1,9 +1,9 @@
 import { createContext } from 'react';
-import { collection, query, getDocs } from 'firebase/firestore';
+import { collection, getDocs, updateDoc } from 'firebase/firestore';
 import { db } from '../../src/firebase/base';
 import { User } from '../../src/type/type';
 
-const docs = await getDocs(query(collection(db, 'users')));
+const docs = await getDocs(collection(db, 'users'));
 
 export function getUsers () {
 	const list: User[] = [];

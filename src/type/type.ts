@@ -3,9 +3,10 @@ export type User = {
 }
 
 export type Price = {
-	id: number;
+	id: string;
+	key: number;
 	name: string;
-	price: number | '';
+	price: string;
 	subject: string;
 	allocation: string[];
 	timestamp: {

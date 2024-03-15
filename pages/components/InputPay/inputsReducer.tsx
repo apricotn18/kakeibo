@@ -1,16 +1,11 @@
-type Input = {
-	name?: string;
-	price?: number;
-	subject?: string;
-	allocation: string[];
-}
+import { Price } from '../../../src/type/type';
 
 type Action = {
-	type: 'added' | 'changed' | 'changed_allocation';
+	type: 'added' | 'changed' | 'changed_allocation' | 'submit';
 	input: any;
 }
 
-export function inputsReducer(state: Input, action: Action) {
+export function inputsReducer(state: Price, action: Action) {
 	switch (action.type) {
 		case 'added': {
 			// return [
