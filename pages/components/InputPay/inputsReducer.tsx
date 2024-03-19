@@ -5,7 +5,7 @@ type Action = {
 	input: any;
 }
 
-export function inputsReducer(state: Price, action: Action) {
+export default function inputsReducer(state: Price, action: Action) {
 	switch (action.type) {
 		case 'changed': {
 			return {

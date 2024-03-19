@@ -9,7 +9,7 @@ type Props = {
 
 export default function ButtonLinkComp(props: Props) {
 	return (
-		<Link href={props.href} className={style.link} style={{marginTop: props.marginTop}}>
+		<Link href={props.href || '/'} className={style.link} style={{marginTop: props.marginTop}}>
 			{props.children}
 		</Link>
 	);

@@ -8,7 +8,7 @@ type Props = {
 
 export default function ButtonLinkComp(props: Props) {
 	return (
-		<Link href={props.href} className={style.buttonLink}>
+		<Link href={props.href || '/'} className={style.buttonLink}>
 			<span>{props.children}</span>
 		</Link>
 	);

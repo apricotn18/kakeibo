@@ -6,11 +6,11 @@ import MessageComp from './components/Message/MessageComp';
 import ButtonLinkComp from './components/Button/ButtonLinkComp';
 import LinkComp from './components/Button/LinkComp';
 import InputPayComp from './components/InputPay/InputPayComp';
-import { getUsers, UsersContext } from './components/UsersContext';
+import UsersProviderComp, { useUsers } from './components/UsersContext/UsersContext';
 
-const users = getUsers();
 
 export default function Index() {
+	const users = useUsers();
 	const prices = usePrices();
 	const id = useSearchParams().get('id');
 	let Content = null;
@@ -45,16 +45,14 @@ export default function Index() {
 
 	return (
 		<div className={!!id ? 'wrapper wrapper--white' : 'wrapper'}>
-			<UsersContext.Provider
-				value={users}
-			>
+			<UsersProviderComp>
 				<PricesProviderComp>
 					<HeaderComp />
 					<section>
 						{Content}
 					</section>
 				</PricesProviderComp>
-			</UsersContext.Provider>
+			</UsersProviderComp>
 		</div>
 	);
 }

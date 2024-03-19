@@ -7,7 +7,7 @@ import TabItemComp from './components/Tab/TabItem/TabItemComp';
 import InputPayComp from './components/InputPay/InputPayComp';
 import MessageComp from './components/Message/MessageComp';
 import ButtonLinkComp from './components/Button/ButtonLinkComp';
-import { getUsers, UsersContext } from './components/UsersContext';
+import UsersProviderComp, { useUsers } from './components/UsersContext/UsersContext';
 
 const tabInfo = [
 	{
@@ -19,16 +19,14 @@ const tabInfo = [
 		label: '買い物リスト入力'
 	},
 ];
-const users = getUsers();
 
 export default function Index() {
+	const users = useUsers();
 	const [currentTab, setCurrentTab] = useState(tabInfo[0].key);
 
 	return (
 		<div className="wrapper wrapper--white">
-			<UsersContext.Provider
-				value={users}
-			>
+			<UsersProviderComp>
 				<PricesProviderComp>
 					<HeaderComp />
 					{users && users.length > 0
@@ -56,7 +54,7 @@ export default function Index() {
 						)
 					}
 				</PricesProviderComp>
-			</UsersContext.Provider>
+			</UsersProviderComp>
 		</div>
 	);
 }
