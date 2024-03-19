@@ -7,6 +7,7 @@ import { User, Price } from '../../../src/type/type';
 import style from './style.module.scss';
 
 type Props = {
+	isAdd: boolean;
 	item?: Price;
 }
 
@@ -18,10 +19,10 @@ export default function InputPayComp(props: Props) {
 	}
 	const pricesDispatch = usePricesDispatch();
 	const [state, dispatch] = useReducer(inputsReducer, initInput);
-	const [isDisable, setIsDisable] = useState(false);
+	const [isDisable, setIsDisable] = useState(true);
 
 	useEffect(() => {
-		const shouldDisabled = state.price > 0 && !!state.subject && state.allocation.length > 0;
+		const shouldDisabled = state.price <= 0 || !state.subject || state.allocation.length <= 0;
 		setIsDisable(shouldDisabled);
 	}, [state])
 
@@ -46,14 +47,40 @@ export default function InputPayComp(props: Props) {
 		});
 	};
 
-	/** データ送信 */
-	const handleSubmit = () => {
+	/** 追加 データ送信 */
+	const handleSubmitAdd = () => {
+		setIsDisable(false);
+		pricesDispatch({
+			type: 'add',
+			item: state,
+		});
+		dispatch({
+			type: 'changed',
+			input: {
+				price: '',
+				subject: '',
+			},
+		});
+		alert('追加しました');
+	};
+
+	/** 更新 データ送信 */
+	const handleSubmitChange = () => {
 		setIsDisable(false);
 		pricesDispatch({
 			type: 'update',
 			item: state,
 		});
 		alert('更新しました');
+	};
+
+	/** 削除 データ送信 */
+	const handleSubmitDelete = () => {
+		pricesDispatch({
+			type: 'delete',
+			item: state,
+		});
+		alert('削除しました');
 	};
 
 	return (
@@ -126,8 +153,25 @@ export default function InputPayComp(props: Props) {
 
 				{/* 送信ボタン */}
 				<fieldset>
-					<Button label="登録する" handleClick={handleSubmit} isDisable={isDisable} />
+					<Button
+						label={props.isAdd ? '追加する' : '更新する'}
+						handleClick={props.isAdd ? handleSubmitAdd : handleSubmitChange}
+						color={isDisable ? 'gray' : undefined}
+						marginTop={30}
+					/>
 				</fieldset>
+
+				{/* 削除ボタン */}
+				{!props.isAdd &&
+					<fieldset>
+						<Button
+							label="削除する"
+							handleClick={handleSubmitDelete}
+							color="red"
+							marginTop={20}
+						/>
+					</fieldset>
+				}
 			</form>
 		</div>
 	);

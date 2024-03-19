@@ -41,7 +41,7 @@ export default function Index() {
 									setCurrent={setCurrentTab}
 								>
 									<TabItemComp isCurrent={currentTab === tabInfo[0].key}>
-										<InputPayComp />
+										<InputPayComp isAdd={true} />
 									</TabItemComp>
 									<TabItemComp isCurrent={currentTab === tabInfo[1].key}>
 										TODO: これから実装

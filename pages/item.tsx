@@ -8,9 +8,12 @@ import { getUsers, UsersContext } from './components/UsersContext';
 const users = getUsers();
 
 export default function Index() {
-	const key = useSearchParams().get('key');
 	const prices = usePrices();
-	const item = prices.filter(item => item.key === Number(key));
+	const id = useSearchParams().get('id');
+	if (!id) {
+		location.href = 'history';
+	}
+	const item = prices.filter(item => item.id === id);
 
 	return (
 		<div className="wrapper wrapper--white">
@@ -20,7 +23,7 @@ export default function Index() {
 				<PricesProviderComp>
 					<HeaderComp />
 					<section>
-						<InputPayComp item={item[0]} />
+						<InputPayComp isAdd={false} item={item[0]} />
 						<LinkComp href="/history" marginTop={30}>立て替え履歴一覧へ戻る</LinkComp>
 					</section>
 				</PricesProviderComp>

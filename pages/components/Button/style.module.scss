@@ -1,6 +1,5 @@
 .button {
 	width: 100%;
-	margin-top: 30px;
 	padding: 15px 0;
 	color: #fff;
 	font-family: inherit;
@@ -11,18 +10,12 @@
 	border-radius: 4px;
 }
 
-.buttonDisabled {
-	width: 100%;
-	margin-top: 30px;
-	padding: 15px 0;
-	color: #fff;
-	font-family: inherit;
-	font-size: 16px;
-	font-weight: bold;
+.button[data-color="gray"] {
 	background-color: #c8c8c8;
-	border: none;
-	border-radius: 4px;
 	pointer-events: none;
+}
+.button[data-color="red"] {
+	background-color: #c85156;
 }
 
 .buttonLink {

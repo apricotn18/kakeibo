@@ -4,7 +4,6 @@ export type User = {
 
 export type Price = {
 	id: string;
-	key: number;
 	name: string;
 	price: string;
 	subject: string;

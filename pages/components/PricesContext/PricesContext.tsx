@@ -1,11 +1,12 @@
-import { createContext, useContext, useEffect, useReducer } from 'react';
-import { Price } from '../../../src/type/type';
+import { createContext, useContext, useReducer } from 'react';
 import { db } from '../../../src/firebase/base';
-import { collection, doc, getDocs, updateDoc } from 'firebase/firestore';
+import { collection, doc, getDocs, addDoc, updateDoc, deleteDoc, serverTimestamp } from 'firebase/firestore';
+import { Price } from '../../../src/type/type';
 
 type Action = {
-	type: 'update' | 'delete';
+	type: 'add' | 'update' | 'delete';
 	item: Price;
+	initInput?: any;
 }
 
 const initState: Price[] = [];
@@ -15,7 +16,6 @@ docs.forEach((doc) => {
 	if (data) {
 		initState.push({
 			id: doc.id,
-			key: data.key,
 			name: data.name,
 			price: data.price,
 			subject: data.subject,
@@ -51,21 +51,34 @@ export function usePricesDispatch() {
 
 export function PricesReducer(state: Price[], action: Action) {
 	switch (action.type) {
+		case 'add': {
+			const nextItem = {
+				...action.item,
+				timestamp: serverTimestamp(),
+			}
+			addDoc(collection(db, 'prices'), nextItem);
+
+			return [
+				...state,
+				action.item,
+			];
+		}
 		case 'update': {
-			const nextState = state.map((item) => {
+			const ref = doc(db, 'prices', action.item.id);
+			updateDoc(ref, action.item);
+
+			return state.map((item) => {
 				if (item.id === action.item.id) {
 					return action.item;
 				}
 				return item;
 			});
-
-			const ref = doc(db, 'prices', action.item.id);
-			updateDoc(ref, action.item);
-
-			return nextState;
 		
 		}
 		case 'delete': {
+			const ref = doc(db, 'prices', action.item.id);
+			deleteDoc(ref);
+
 			return state.filter((item) => {
 				return item.id !== action.item.id;
 			});
