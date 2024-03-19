@@ -77,7 +77,7 @@ export function PricesReducer(state: Price[], action: Action) {
 		}
 		case 'delete': {
 			const ref = doc(db, 'prices', action.item.id);
-			deleteDoc(ref);
+			deleteDoc(ref).then(() => location.href = '/history');
 
 			return state.filter((item) => {
 				return item.id !== action.item.id;

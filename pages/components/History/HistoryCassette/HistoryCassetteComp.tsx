@@ -22,7 +22,7 @@ export default function HistoryCassetteComp(props: Props) {
 	const item = props.item;
 
 	return (
-		<Link href={'/item?id='+item.id}>
+		<Link href={'/history?id='+item.id}>
 			<span className={style.info}>
 				<span>{item.subject}</span>
 				<span className={style.price}>{toPrice(Number(item.price))}円</span>
