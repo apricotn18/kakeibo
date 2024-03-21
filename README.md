@@ -12,12 +12,10 @@ https://kakeibo-iota.vercel.app/
   - stateの更新（配列やオブジェクト）
   - リデューサとコンテクストを組み合わせる
   - ライフサイクルを意識
-- /historyページ
-  クエリ「?id=hogehoge」からidが一致するアイテムを取り出す
-- InputPayコンポーネント
-  「/」と「/history?id=hogehoge」において、少し異なる見た目を同じコンポーネントで実装
-- Tabコンポーネント、Buttonコンポーネント
-  Reactっぽく
+- `/history`：クエリ「?id=hogehoge」からidが一致するアイテムを取り出す
+- `InputPayコンポーネント`：「/」と「/history?id=hogehoge」において、少し異なる見た目を同じコンポーネントで実装
+- `Tabコンポーネント`, `Buttonコンポーネント`：Reactっぽく実装
+
   
 
 
