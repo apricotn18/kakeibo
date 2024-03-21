@@ -18,25 +18,7 @@ bun dev
 ```
 
 ## ページ構成（省略あり）
-.  
-├── pages<br>  
-│   ├── components  
-│   │   ├──  Button  
-│   │   ├──  Header  
-│   │   ├──  History  
-│   │   ├──  InputPay（入力）  
-│   │   ├──  Message（デモでは表示されません）  
-│   │   ├──  PricesContext  
-│   │   ├──  Summary（トップページに表示するまとめ）  
-│   │   ├──  Tab  
-│   │   └──  UserContext  
-│   ├── history.tsx  
-│   └── index.tsx  
-├── public  
-└── src  
-    ├── css  
-    ├── firebase  
-    └── type  
+![スクリーンショット 2024-03-21 17 34 24](https://github.com/apricotn18/kakeibo/assets/56545404/ef25993a-1dd1-41ad-8286-8bef2db1e8c3)
 
 ## 工夫した点
 - 今期勉強したReactの基礎を詰め込みました
