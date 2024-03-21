@@ -1,4 +1,27 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# アプリ
+```
+https://kakeibo-iota.vercel.app/
+```
+
+### 工夫した点
+- 今期勉強したReactの基礎を詰め込みました
+  - React hooks
+  - stateの更新（配列やオブジェクト）
+  - リデューサとコンテクストを組み合わせる
+  - ライフサイクルを意識
+- /historyページ
+  クエリ「?id=hogehoge」からidが一致するアイテムを取り出す
+- InputPayコンポーネント
+  「/」と「/history?id=hogehoge」において、少し異なる見た目を同じコンポーネントで実装
+- Tabコンポーネント、Buttonコンポーネント
+  Reactっぽく
+  
+
+
+#### 解決できなかった問題
+contextがページをまたがる場合に状態の引き継ぎできないようですが、うまく解決できませんでした
+なのでfirebeseデータとの連携がうまくできていません（更新すれば直ります）
+Redux導入するすれば直りそうですが、まだ勉強しておらず間に合わなかったので来期対応にさせてください
 
 ## Getting Started
 
