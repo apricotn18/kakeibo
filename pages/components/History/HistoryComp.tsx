@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import HistoryCassetteComp from './HistoryCassette/HistoryCassetteComp';
-import { useUsers } from '../UsersContext/UsersContext';
+import { useUsers } from '../UserContext/UsersContext';
 import { usePrices } from '../PricesContext/PricesContext';
 import { User, Price } from '../../../src/type/type';
 import style from './style.module.scss';

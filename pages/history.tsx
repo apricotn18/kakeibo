@@ -1,4 +1,5 @@
 import { useSearchParams } from 'next/navigation';
+import UsersProviderComp, { useUsers } from './components/UserContext/UsersContext';
 import PricesProviderComp, { usePrices } from './components/PricesContext/PricesContext';
 import HeaderComp from './components/Header/HeaderComp';
 import HistoryComp from './components/History/HistoryComp';
@@ -6,7 +7,6 @@ import MessageComp from './components/Message/MessageComp';
 import ButtonLinkComp from './components/Button/ButtonLinkComp';
 import LinkComp from './components/Button/LinkComp';
 import InputPayComp from './components/InputPay/InputPayComp';
-import UsersProviderComp, { useUsers } from './components/UsersContext/UsersContext';
 
 
 export default function Index() {

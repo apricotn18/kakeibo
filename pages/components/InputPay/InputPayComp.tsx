@@ -1,7 +1,7 @@
 import { useContext, useEffect, useReducer, useState } from 'react';
 import Button from '../Button/ButtonComp';
 import inputsReducer from './inputsReducer';
-import { useUsers } from '../UsersContext/UsersContext';
+import { useUsers } from '../UserContext/UsersContext';
 import { usePricesDispatch } from '../PricesContext/PricesContext';
 import { User, Price } from '../../../src/type/type';
 import style from './style.module.scss';
@@ -12,7 +12,7 @@ type Props = {
 }
 
 export default function InputPayComp(props: Props) {
-	const users = useUsers();
+	const users: User[] = useUsers();
 	const initInput = props.item ? props.item : {
 		name: users[0].name,
 		allocation: users.map(user => user.name),

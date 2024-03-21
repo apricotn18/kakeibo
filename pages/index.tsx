@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import UsersProviderComp, { useUsers } from './components/UserContext/UsersContext';
 import PricesProviderComp from './components/PricesContext/PricesContext';
 import HeaderComp from './components/Header/HeaderComp';
 import SummaryComp from './components/Summary/SummaryComp';
@@ -7,7 +8,6 @@ import TabItemComp from './components/Tab/TabItem/TabItemComp';
 import InputPayComp from './components/InputPay/InputPayComp';
 import MessageComp from './components/Message/MessageComp';
 import ButtonLinkComp from './components/Button/ButtonLinkComp';
-import UsersProviderComp, { useUsers } from './components/UsersContext/UsersContext';
 
 const tabInfo = [
 	{
