@@ -17,6 +17,27 @@ pnpm dev
 bun dev
 ```
 
+## ページ構成（省略あり）
+.
+├── pages
+│   ├── components
+│   │   ├──  Button
+│   │   ├──  Header
+│   │   ├──  History
+│   │   ├──  InputPay（入力）
+│   │   ├──  Message（デモでは表示されません）
+│   │   ├──  PricesContext
+│   │   ├──  Summary（トップページに表示するまとめ）
+│   │   ├──  Tab
+│   │   └──  UserContext
+│   ├── history.tsx
+│   └── index.tsx
+├── public
+└── src
+    ├── css
+    ├── firebase
+    └── type
+
 ## 工夫した点
 - 今期勉強したReactの基礎を詰め込みました
   - React hooks
