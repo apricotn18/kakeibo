@@ -18,25 +18,25 @@ bun dev
 ```
 
 ## ページ構成（省略あり）
-.
-├── pages
-│   ├── components
-│   │   ├──  Button
-│   │   ├──  Header
-│   │   ├──  History
-│   │   ├──  InputPay（入力）
-│   │   ├──  Message（デモでは表示されません）
-│   │   ├──  PricesContext
-│   │   ├──  Summary（トップページに表示するまとめ）
-│   │   ├──  Tab
-│   │   └──  UserContext
-│   ├── history.tsx
-│   └── index.tsx
-├── public
-└── src
-    ├── css
-    ├── firebase
-    └── type
+.  
+├── pages<br>  
+│   ├── components  
+│   │   ├──  Button  
+│   │   ├──  Header  
+│   │   ├──  History  
+│   │   ├──  InputPay（入力）  
+│   │   ├──  Message（デモでは表示されません）  
+│   │   ├──  PricesContext  
+│   │   ├──  Summary（トップページに表示するまとめ）  
+│   │   ├──  Tab  
+│   │   └──  UserContext  
+│   ├── history.tsx  
+│   └── index.tsx  
+├── public  
+└── src  
+    ├── css  
+    ├── firebase  
+    └── type  
 
 ## 工夫した点
 - 今期勉強したReactの基礎を詰め込みました
@@ -49,6 +49,6 @@ bun dev
 - `Tabコンポーネント`, `Buttonコンポーネント`：Reactっぽく実装
 
 ## 解決できなかった問題
-ページをまたがる場合、更新したstateの引き継ぎができないようで解決できませんでした
-（Redux導入すれば直りそうですが、まだ勉強しておらず間に合わなかったので来期やらせてください）
+ページをまたがる場合、更新したstateの引き継ぎができないようで解決できませんでした  
+（Redux導入すれば直りそうですが、まだ勉強しておらず間に合わなかったので来期やらせてください）  
 なので、firebeseデータとの連携がうまくできていません（更新すれば直ります）
