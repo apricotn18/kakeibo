@@ -13,7 +13,7 @@ https://kakeibo-iota.vercel.app/
   - リデューサとコンテクストを組み合わせる
   - ライフサイクルを意識
 - `/history`：クエリ「?id=hogehoge」からidが一致するアイテムを取り出す
-- `InputPayコンポーネント`：「/」と「/history?id=hogehoge」において、少し異なる見た目を同じコンポーネントで実装
+- `InputPayコンポーネント`：`/`と`/history?id=hogehoge`において、入力欄を少し異なる見た目で実装
 - `Tabコンポーネント`, `Buttonコンポーネント`：Reactっぽく実装
 
   
