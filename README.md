@@ -2,9 +2,9 @@
 ```
 https://kakeibo-iota.vercel.app/
 ```
-- `/`：　トップページ
-- `/history`：　履歴リスト
-- `/history?id=hogehoge`：　履歴アイテム詳細（更新や削除）
+- `/`：トップページ
+- `/history`：履歴リスト
+- `/history?id=hogehoge`：履歴アイテム詳細（更新や削除）
 
 ### 工夫した点
 - 今期勉強したReactの基礎を詰め込みました
