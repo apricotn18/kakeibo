@@ -10,20 +10,22 @@ type Action = {
 }
 
 const initState: Price[] = [];
-const docs = await getDocs(collection(db, 'prices'));
-docs.forEach((doc) => {
-	const data = doc.data();
-	if (data) {
-		initState.push({
-			id: doc.id,
-			name: data.name,
-			price: data.price,
-			subject: data.subject,
-			allocation: data.allocation,
-			timestamp: data.timestamp,
-		});
-	}
-});
+(async () => {
+	const docs = await getDocs(collection(db, 'prices'));
+	docs.forEach((doc) => {
+		const data = doc.data();
+		if (data) {
+			initState.push({
+				id: doc.id,
+				name: data.name,
+				price: data.price,
+				subject: data.subject,
+				allocation: data.allocation,
+				timestamp: data.timestamp,
+			});
+		}
+	});
+})();
 
 const PricesContext = createContext(initState);
 // @ts-ignore

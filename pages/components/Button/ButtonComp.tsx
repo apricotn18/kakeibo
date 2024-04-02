@@ -2,7 +2,8 @@ import style from './style.module.scss';
 
 type Props = {
 	label: string;
-	color?: 'gray' | 'red';
+	disabled: boolean;
+	color?: 'red'; 
 	marginTop: number;
 	handleClick: () => void;
 }
@@ -14,6 +15,7 @@ export default function ButtonComp(props: Props) {
 			value={props.label}
 			className={style.button}
 			data-color={props.color}
+			disabled={props.disabled}
 			style={{marginTop: props.marginTop}}
 			onClick={props.handleClick}
 		/>

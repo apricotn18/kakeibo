@@ -1,4 +1,4 @@
-import { useContext, useEffect, useReducer, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import Button from '../Button/ButtonComp';
 import inputsReducer from './inputsReducer';
 import { useUsers } from '../UserContext/UsersContext';
@@ -156,7 +156,7 @@ export default function InputPayComp(props: Props) {
 					<Button
 						label={props.isAdd ? '追加する' : '更新する'}
 						handleClick={props.isAdd ? handleSubmitAdd : handleSubmitChange}
-						color={isDisable ? 'gray' : undefined}
+						disabled={isDisable}
 						marginTop={30}
 					/>
 				</fieldset>
@@ -167,6 +167,7 @@ export default function InputPayComp(props: Props) {
 						<Button
 							label="削除する"
 							handleClick={handleSubmitDelete}
+							disabled={isDisable}
 							color="red"
 							marginTop={20}
 						/>

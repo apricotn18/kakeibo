@@ -10,7 +10,7 @@
 	border-radius: 4px;
 }
 
-.button[data-color="gray"] {
+.button[disabled] {
 	background-color: #c8c8c8;
 	pointer-events: none;
 }
